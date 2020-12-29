@@ -70,9 +70,11 @@ P.S. В дальнейшем планируется деплой сервиса 
 }
 ```
 
-##Примеры запросов
+## Примеры запросов
 
-###Post запрос
+Ниже предсталены примеры запросов
+
+### Post запрос
 
 `[POST] /api/mirea/post-method` - Post запрос
 
@@ -153,7 +155,7 @@ transfer-encoding: chunked
 }
 ```
 
-###Put запрос
+### Put запрос
 `[PUT] /api/mirea/put-method` - *put запрос*
 
 Запрос:
@@ -184,7 +186,7 @@ http://localhost:8080/api/mirea/put-method
 }
 ```
 
-###Delete запрос
+### Delete запрос
 
 `[DELETE] /api/mirea/delete-method` - *delete запрос*
 Запрос:
