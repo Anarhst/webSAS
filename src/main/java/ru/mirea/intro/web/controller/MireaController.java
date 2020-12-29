@@ -65,7 +65,7 @@ public class MireaController {
 
     @DeleteMapping("/delete-method")
     @ApiOperation(value = "Делит-метод тестового веб-сервиса",notes = "Запрос на удаление данных")
-    public  ResponseEntity<Response<String>> deleteMethod(@RequestParam Long id) {
+    public  ResponseEntity<Response<String>> deleteMethod(@RequestParam(name = "Идентификатор запроса") Long id) {
         try {
             String testServiceResponse = testService.testServiceDeleteMethod(id);
             return new ResponseEntity<>(new Response<>(new Meta(0,"All good!"), testServiceResponse), HttpStatus.OK);
