@@ -76,6 +76,7 @@ public class MireaController {
     }
 
     @GetMapping("/health-check")
+    @ApiOperation(value = "Проверка состояния ситстемы", notes = "Health check системы")
     public ResponseEntity<Response<String>> healthCheck() {
         return new ResponseEntity<>(new Response<>(new Meta(0,"All good"),"Successfully connected"), HttpStatus.OK);
     }
