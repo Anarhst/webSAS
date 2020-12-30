@@ -2,7 +2,6 @@ package ru.mirea.intro.web.controller;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import org.springframework.context.annotation.Description;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -75,4 +74,10 @@ public class MireaController {
         }
 
     }
+
+    @GetMapping("/health-check")
+    public ResponseEntity<Response<String>> healthCheck() {
+        return new ResponseEntity<>(new Response<>(new Meta(0,"All good"),"Successfully connected"), HttpStatus.OK);
+    }
+
 }

@@ -19,7 +19,7 @@ import java.util.List;
 public class SwaggerConfiguration {
 
     public static final String AUTHORIZATION_HEADER = "Authorization";
-    public static final String DEFAULT_INCLUDE_PATTERN = "/api/.*";
+    public static final String DEFAULT_INCLUDE_PATTERN = "(/actuator/healthcheck|/api/.*)";
 
     @Bean
     public Docket swaggerSpringfoxDocket() {

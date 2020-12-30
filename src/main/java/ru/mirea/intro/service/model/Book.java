@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.Objects;
 
@@ -11,7 +12,7 @@ import java.util.Objects;
 @Getter
 @Setter
 @NoArgsConstructor
-public class Book {
+public class Book implements Comparable{
     private Long id;
     private String author;
     private String name;
@@ -36,5 +37,19 @@ public class Book {
                 ", author='" + author + '\'' +
                 ", name='" + name + '\'' +
                 '}';
+    }
+
+
+    @Override
+    public int compareTo(@NotNull Object o) {
+        Book tmp = (Book) o;
+        if(this.id < tmp.id) {
+            return -1;
+        }
+        else if (this.id > tmp.id) {
+            return 1;
+        }
+        else
+            return 0;
     }
 }

@@ -30,6 +30,8 @@ P.S. В дальнейшем планируется деплой сервиса 
 
 ## API
 
+`[GET] /api/mirea/health-check` — метод проверки состояния сервиса
+
 `[DELETE] /api/mirea/delete-method` — запрос на удаление данных с сервера. Удаление данных происходит по **id**
 
 `[GET] /api/mirea/get-method` — запрос на получение данных с сервера. Забирает **id** объекта и возвращает данные в формате **JSON**
@@ -70,9 +72,42 @@ P.S. В дальнейшем планируется деплой сервиса 
 }
 ```
 
+
 ## Примеры запросов
 
 Ниже предсталены примеры запросов
+
+### Health Check
+
+Запрос:
+
+`curl -X GET "http://localhost:8080/api/mirea/health-check" -H "accept: */*"`
+
+URL запроса:
+
+`http://localhost:8080/api/mirea/health-check`
+
+Заголовок ответа:
+
+```
+connection: keep-alive 
+content-type: application/json 
+date: Wed, 30 Dec 2020 18:51:04 GMT 
+keep-alive: timeout=60 
+transfer-encoding: chunked 
+```
+
+Тело ответа:
+
+```
+{
+  "meta": {
+    "code": 0,
+    "description": "All good"
+  },
+  "dataBlock": "Successfully connected"
+}
+```
 
 ### Post запрос
 

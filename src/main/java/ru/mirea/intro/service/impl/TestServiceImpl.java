@@ -1,6 +1,8 @@
 package ru.mirea.intro.service.impl;
 
+import org.apache.tomcat.util.json.JSONParser;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.configurationprocessor.json.JSONObject;
 import org.springframework.stereotype.Service;
 import ru.mirea.intro.dao.RequestDAO;
 import ru.mirea.intro.dao.repository.RequestRepository;
@@ -20,7 +22,9 @@ public class TestServiceImpl implements TestService {
     public Request testServiceGetMethod(Long id) throws NoSuchRequest {
         Optional<RequestDAO> requestDAO = requestRepository.findById(id);
         if (requestDAO.isPresent()) {
-            return RequestMapper.REQUEST_MAPPER.requestDAOToRequest(requestDAO.get());
+            Request request = RequestMapper.REQUEST_MAPPER.requestDAOToRequest(requestDAO.get());
+            request.SortList();
+            return request;
         }
         throw new NoSuchRequest();
     }
@@ -30,7 +34,8 @@ public class TestServiceImpl implements TestService {
         RequestDAO requestDAO = RequestMapper.REQUEST_MAPPER.requestToRequestDAO(request);
         requestDAO.getBookDaoList().forEach(bookDao -> bookDao.setRequestDao(requestDAO));
         requestRepository.save(requestDAO);
-        return "Successfully inserted row!";
+        request.SortList();
+        return request.toString();
     }
 
     @Override
@@ -40,7 +45,8 @@ public class TestServiceImpl implements TestService {
             RequestDAO requestPutDAO = RequestMapper.REQUEST_MAPPER.requestToRequestDAO(request);
             requestPutDAO.getBookDaoList().forEach(bookDao -> bookDao.setRequestDao(requestPutDAO));
             requestRepository.save(requestPutDAO);
-            return "Successfully updated row!";
+            request.SortList();
+            return request.toString();
         }
         throw new NoSuchRequest();
 

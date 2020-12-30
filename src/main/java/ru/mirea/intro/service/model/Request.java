@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
@@ -28,6 +29,10 @@ public class Request {
     @Override
     public int hashCode() {
         return Objects.hash(id, requestValue, bookList);
+    }
+
+    public void SortList() {
+        Collections.sort(bookList);
     }
 
     @Override

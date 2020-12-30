@@ -4,6 +4,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.Getter;
+import org.jetbrains.annotations.NotNull;
+import ru.mirea.intro.service.model.Book;
 
 import javax.persistence.*;
 
@@ -13,7 +15,7 @@ import javax.persistence.*;
 @Setter
 @Entity
 @Table(name = "Book", schema = "public")
-public class BookDao {
+public class BookDao implements Comparable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
@@ -23,4 +25,17 @@ public class BookDao {
     @ManyToOne
     @JoinColumn(name = "request_id", nullable = false)
     private RequestDAO requestDao;
+
+    @Override
+    public int compareTo(@NotNull Object o) {
+        BookDao tmp = (BookDao) o;
+        if(this.id < tmp.id) {
+            return -1;
+        }
+        else if (this.id > tmp.id) {
+            return 1;
+        }
+        else
+            return 0;
+    }
 }
