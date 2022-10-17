@@ -256,7 +256,7 @@ transfer-encoding: chunked
 [Telegram](http://t.me/Anarhlst)
 
 ```mermaid
-title Взаимодействие сервисов
+sequenceDiagram
 
 Web-Форма->>Микросервис: Отправить данные из формы
 Микросервис->>CRM: Отправить обработанные данные в CRM
